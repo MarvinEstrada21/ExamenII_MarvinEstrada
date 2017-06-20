@@ -1,2 +1,13 @@
 #include "Animal.h"
-#include <string>
+
+Animal :: Animal() {
+
+}
+
+string Animal :: getNombre() {
+	return "";
+}
+
+string Animal :: getSonido() {
+	return "";
+}
