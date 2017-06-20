@@ -4,66 +4,93 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <fstream>
+#include <vector>
 
 #include "Animal.h"
 #include "Mamifero.h"
 #include "Perro.h"
 #include "Gato.h"
 #include "Oveja.h"
+#include "Integer.h"
 
 using namespace std;
 
 string Aleatorio();
 
 int main() {
+	vector<Integer*> lista_nums;
 	ofstream archivo;
 	archivo.open("Animales.txt");
 	int cantidad = 10;
 	string animales[cantidad];
 	int opcion;
 	cout << "  MENU PRINCIPAL   " << endl
-		<< "1.- Crear un arreglo de Animales" << endl
-		<< "2.- Agregar Animales a Archivo de Texto" << endl
-		<< "3.- Suma" << endl
-		<< "4.- Resta" << endl
-		<< "5.- Multiplicación" << endl
-		<< "6.- Salir" << endl;
+		<< "1.- Crear un arreglo de Animales e Imprimir Archivo" << endl
+		<< "2.- Suma" << endl
+		<< "3.- Resta" << endl
+		<< "4.- Multiplicación" << endl
+		<< "5.- Salir" << endl;
 	cout << "Ingrese la opción que desea ejecutar: ";
 	cin >> opcion;
-	while (opcion != 6) {
+	while (opcion != 5) {
 		if (opcion == 1) {
 			string temp;
 			for (int i = 0; i < cantidad; i++) {
 				temp = Aleatorio();
 				animales[i] = temp;
-				cout << temp << endl;
+				//cout << temp << endl;
+				archivo << temp;
+				archivo << endl;
 			}
 			cout << "Arreglo llenado exitosamente" << endl;
 		}
 		if (opcion == 2) {
-			for (int i = 0; i < 10; i++) {
-				archivo << animales[i];
-			}
-			cout << "Archivo llenado exitosamente" << endl;
+			int num1, num2;
+			cout << "Ingrese el primer número: ";
+			cin >> num1;
+			cout << "Ingrese el segundo número: ";
+			cin >> num2;
+
+			Integer* numero = new Integer(num1);
+			Integer* numero2 = new Integer(num2);
+			numero2 = *numero + numero2;
+			int sumasobre = numero2 -> getNumero();
+			cout << "El resultado es: " << sumasobre << endl;
 		}
 		if (opcion == 3) {
+			int num1, num2;
+			cout << "Ingrese el primer número: ";
+			cin >> num1;
+			cout << "Ingrese el segundo número: ";
+			cin >> num2;
 
+			Integer* numero = new Integer(num1);
+			Integer* numero2 = new Integer(num2);
+			numero2 = *numero - numero2;
+			int sumasobre = numero2 -> getNumero();
+			cout << "El resultado es: " << sumasobre << endl;
 		}
 		if (opcion == 4) {
+			int num1, num2;
+			cout << "Ingrese el primer número: ";
+			cin >> num1;
+			cout << "Ingrese el segundo número: ";
+			cin >> num2;
 
-		}
-		if (opcion == 5) {
-
+			Integer* numero = new Integer(num1);
+			Integer* numero2 = new Integer(num2);
+			numero2 = *numero * numero2;
+			int sumasobre = numero2 -> getNumero();
+			cout << "El resultado es: " << sumasobre << endl;
 		}
 		archivo.close();
 		cout << endl;
 		cout << "  MENU PRINCIPAL   " << endl
-		<< "1.- Crear un arreglo de Animales" << endl
-		<< "2.- Agregar Animales a Archivo de Texto" << endl
-		<< "3.- Suma" << endl
-		<< "4.- Resta" << endl
-		<< "5.- Multiplicación" << endl
-		<< "6.- Salir" << endl;
+		<< "1.- Crear un arreglo de Animales e Imprimir Archivo" << endl
+		<< "2.- Suma" << endl
+		<< "3.- Resta" << endl
+		<< "4.- Multiplicación" << endl
+		<< "5.- Salir" << endl;
 		cout << "Ingrese la opción que desea ejecutar: ";
 		cin >> opcion;
 	}
